@@ -13,7 +13,7 @@ describe("SolidityFunctions", function () {
     const SolidityFunctions = await hre.ethers.getContractFactory(
       "SolidityFunctions"
     );
-    const INITIAL_BALANCE = 1_000_000;
+    const INITIAL_BALANCE = 10_000;
 
     const ctcSolidityFunctions = await SolidityFunctions.deploy(
       INITIAL_BALANCE
@@ -36,6 +36,22 @@ describe("SolidityFunctions", function () {
 
       const balance = await ctcSolidityFunctions.getBalance();
       console.log("balance is now ", balance);
+    });
+
+    it("calculator charan", async function () {
+      const { ctcSolidityFunctions } = await loadFixture(deploy);
+      await ctcSolidityFunctions.calculator(1,25_000);
+      let balance = await ctcSolidityFunctions.getBalance();
+       console.log("current balance ", balance);
+      await ctcSolidityFunctions.calculator(2,25_000);
+       balance = await ctcSolidityFunctions.getBalance();
+       console.log("current balance ", balance);
+      await ctcSolidityFunctions.calculator(3,25_000);
+       balance = await ctcSolidityFunctions.getBalance();
+       console.log("current balance ", balance);
+      await ctcSolidityFunctions.calculator(4,25_000);
+       balance = await ctcSolidityFunctions.getBalance();
+      console.log("current balance ", balance);
     });
   });
 });
