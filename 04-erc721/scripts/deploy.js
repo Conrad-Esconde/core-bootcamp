@@ -7,7 +7,7 @@
 const hre = require("hardhat");
 
 async function main() {
-  const contract = await hre.ethers.deployContract("KapyKon");
+  const contract = await hre.ethers.deployContract("Koin", [99999990000000000000000n]);
 
   await contract.waitForDeployment();
 
